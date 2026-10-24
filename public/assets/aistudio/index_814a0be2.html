@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8fc">
+  <meta name="description" content="A thoughtful study planner that turns deadlines and available time into an editable daily plan.">
+  <title>Studyflow — a calmer way to prepare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main id="auth-screen" class="auth-screen">
+    <section class="auth-story" aria-label="About Studyflow">
+      <a class="brand brand-light" href="/" aria-label="Studyflow home"><span class="brand-mark">s</span><span>studyflow</span></a>
+      <div class="story-content">
+        <span class="eyebrow light-eyebrow"><span class="eyebrow-dot"></span> YOUR NEXT CHAPTER STARTS HERE</span>
+        <h1>Make room for<br><em>what matters.</em></h1>
+        <p>A thoughtful study plan, built around your deadlines, your energy, and your real life.</p>
+        <div class="story-preview">
+          <div class="preview-top"><span class="preview-label">YOUR WEEK AT A GLANCE</span><span class="preview-week">OCT 20 — 26</span></div>
+          <div class="preview-days" aria-hidden="true">
+            <div><span>M</span><i class="mini-bar mint"></i><i class="mini-bar lilac"></i></div>
+            <div><span>T</span><i class="mini-bar mint"></i><i class="mini-bar lilac"></i><i class="mini-bar coral"></i></div>
+            <div class="preview-today"><span>W</span><i class="mini-bar mint"></i><i class="mini-bar lilac"></i></div>
+            <div><span>T</span><i class="mini-bar mint"></i></div>
+            <div><span>F</span><i class="mini-bar lilac"></i><i class="mini-bar coral"></i></div>
+            <div><span>S</span><i class="mini-bar mint"></i></div>
+            <div><span>S</span><i class="mini-bar lilac"></i></div>
+          </div>
+          <div class="preview-footer"><span><i class="legend-dot mint-dot"></i> Focus session</span><span><i class="legend-dot lilac-dot"></i> Review</span><span><i class="legend-dot coral-dot"></i> Due soon</span></div>
+        </div>
+      </div>
+      <div class="story-bottom"><span>SMALL STEPS. STEADY PROGRESS.</span><span>MADE FOR THE WAY YOU LEARN.</span></div>
+    </section>
+    <section class="auth-panel">
+      <div class="auth-mobile-brand"><a class="brand" href="/"><span class="brand-mark">s</span><span>studyflow</span></a></div>
+      <div class="auth-card">
+        <div class="auth-heading">
+          <span class="eyebrow" id="auth-eyebrow">A LITTLE MORE FOCUS, A LOT LESS STRESS</span>
+          <h2 id="auth-title">Welcome back</h2>
+          <p id="auth-subtitle">Pick up right where you left off.</p>
+        </div>
+        <div class="auth-tabs" role="tablist" aria-label="Account access">
+          <button class="auth-tab active" id="login-tab" role="tab" aria-selected="true" type="button">Sign in</button>
+          <button class="auth-tab" id="register-tab" role="tab" aria-selected="false" type="button">Create account</button>
+        </div>
+        <form id="auth-form" novalidate>
+          <label class="field-label" for="email">Email address</label>
+          <div class="input-wrap"><span class="input-icon" aria-hidden="true">@</span><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+          <label class="field-label password-label" for="password">Password <span class="password-hint" id="password-hint">At least 8 characters</span></label>
+          <div class="input-wrap"><span class="input-icon lock-icon" aria-hidden="true">◆</span><input id="password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" minlength="8" required><button id="toggle-password" class="show-password" type="button" aria-label="Show password">Show</button></div>
+          <button id="auth-submit" class="button button-primary auth-submit" type="submit"><span>Sign in to Studyflow</span><span aria-hidden="true">↗</span></button>
+          <p id="auth-message" class="form-message" role="status" aria-live="polite"></p>
+        </form>
+        <p class="auth-terms">By continuing, you agree to our <a href="#terms" data-policy>Terms of use</a> and <a href="#privacy" data-policy>Privacy policy</a>.</p>
+        <div class="auth-note"><span class="note-icon">✳</span><span>Your schedule is yours. We never use AI to make hidden planning decisions.</span></div>
+      </div>
+      <footer class="auth-footer"><span>© 2026 Studyflow</span><span><i></i> A more human way to study</span></footer>
+    </section>
+  </main>
+
+  <div id="app-screen" class="app-shell hidden">
+    <aside class="sidebar">
+      <a class="brand sidebar-brand" href="#" aria-label="Studyflow home"><span class="brand-mark">s</span><span>studyflow</span></a>
+      <div class="workspace-label">YOUR SPACE</div>
+      <nav class="side-nav" aria-label="Main navigation">
+        <a class="nav-link active" href="#overview" data-section="overview"><span class="nav-icon">◫</span> Overview</a>
+        <a class="nav-link" href="#my-topics" data-section="topics"><span class="nav-icon">▤</span> My topics <span id="nav-topic-count" class="nav-count">0</span></a>
+        <a class="nav-link" href="#my-plan" data-section="plan"><span class="nav-icon">▦</span> Study plan</a>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-coach">
+        <div class="coach-spark">✳</div>
+        <strong>One step at a time.</strong>
+        <p>Your plan is a guide, not a grade. Adjust it whenever life happens.</p>
+      </div>
+      <button id="logout-button" class="nav-link logout-link" type="button"><span class="nav-icon">↪</span> Sign out</button>
+      <div class="sidebar-user"><div class="avatar" id="user-avatar">S</div><div class="user-details"><strong id="user-email">Student</strong><span>STUDENT WORKSPACE</span></div><span class="user-menu">···</span></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb"><span>My space</span><span class="crumb-slash">/</span><strong id="breadcrumb-current">Overview</strong></div>
+        <div class="topbar-actions"><span class="today-chip"><span class="status-dot"></span> YOUR PLAN, YOUR PACE</span><button class="icon-button" id="help-button" aria-label="Planning guide" title="Planning guide">?</button></div>
+      </header>
+      <div class="page-content">
+        <section id="overview-section" class="view-section">
+          <div class="welcome-row"><div><span class="eyebrow" id="today-label">YOUR STUDY SPACE</span><h1>Good to see you<span class="wave">.</span></h1><p class="welcome-copy">A clearer plan starts with what's on your plate.</p></div><button id="add-topic-top" class="button button-primary"><span aria-hidden="true">＋</span> Add a topic</button></div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">ON YOUR LIST</span><span class="stat-icon icon-blue">▤</span></div><div class="stat-number" id="stat-topics">0</div><div class="stat-caption">topics to work through</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">STUDY TIME PLANNED</span><span class="stat-icon icon-mint">◷</span></div><div class="stat-number"><span id="stat-hours">0</span><small> hrs</small></div><div class="stat-caption">estimated across your topics</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">COMING UP FIRST</span><span class="stat-icon icon-coral">↗</span></div><div class="stat-number stat-deadline" id="stat-deadline">—</div><div class="stat-caption" id="stat-deadline-caption">add a deadline to get started</div></article>
+          </div>
+          <div class="dashboard-grid">
+            <section class="content-card focus-card">
+              <div class="section-heading"><div><span class="eyebrow">YOUR NEXT STEPS</span><h2>Focus list</h2></div><button class="text-button" data-go="topics">See all topics <span>→</span></button></div>
+              <div id="focus-list" class="focus-list"></div>
+            </section>
+            <section class="content-card week-card">
+              <div class="section-heading"><div><span class="eyebrow">A REALISTIC RHYTHM</span><h2>This week</h2></div><button class="text-button" data-go="plan">Full plan <span>→</span></button></div>
+              <div id="week-preview" class="week-preview"></div>
+              <div class="week-note"><span>✳</span> Built around the hours you have — breaks included.</div>
+            </section>
+          </div>
+          <section class="content-card planner-prompt">
+            <div class="prompt-icon">✳</div><div><span class="eyebrow">A PLAN THAT FITS YOUR LIFE</span><h2>Ready to make your week feel lighter?</h2><p>Add topics and deadlines, then let the planner map out a first draft you can change anytime.</p></div><button id="create-plan-button" class="button button-soft">Build my plan <span>→</span></button>
+          </section>
+        </section>
+
+        <section id="topics-section" class="view-section hidden">
+          <div class="welcome-row page-title-row"><div><span class="eyebrow">THE WHOLE PICTURE</span><h1>Your topics<span class="wave">.</span></h1><p class="welcome-copy">Capture it all. You can change the plan as you go.</p></div><button id="add-topic-page" class="button button-primary"><span>＋</span> Add a topic</button></div>
+          <div class="toolbar-row"><div class="topic-count-label"><span id="topics-heading-count">0 topics</span><span> · Sorted by what's due next</span></div><button id="replan-button" class="button button-soft">↻ Refresh plan</button></div>
+          <div id="topic-list" class="topic-list"></div>
+          <div id="topics-empty" class="empty-state hidden"><div class="empty-icon">▤</div><h3>A fresh page.</h3><p>Add your first topic and give it a deadline. We'll help with the rest.</p><button class="button button-primary" data-open-topic>＋ Add your first topic</button></div>
+        </section>
+
+        <section id="plan-section" class="view-section hidden">
+          <div class="welcome-row page-title-row"><div><span class="eyebrow">A SUGGESTION, NOT A RULEBOOK</span><h1>Your study plan<span class="wave">.</span></h1><p class="welcome-copy">A day-by-day draft, shaped by your priorities and available time.</p></div><button id="rebuild-plan-button" class="button button-primary">↻ Rebuild plan</button></div>
+          <div id="plan-summary" class="plan-summary"></div>
+          <div id="plan-warnings" class="plan-warnings" aria-live="polite"></div>
+          <div class="plan-controls"><label for="hours-per-day">Available study time each day</label><div class="hours-control"><input id="hours-per-day" type="number" min="0.5" max="12" step="0.5" value="2"><span>hours</span><button id="save-hours-button" class="button button-soft">Update</button></div></div>
+          <div id="plan-table-wrap" class="plan-table-wrap">
+            <div class="plan-table-head"><span>YOUR DAY</span><span>FOCUS SESSIONS</span><span>STUDY TIME</span></div>
+            <div id="plan-days" class="plan-days"></div>
+          </div>
+          <div id="plan-empty" class="empty-state hidden"><div class="empty-icon">▦</div><h3>Your plan starts with a topic.</h3><p>Add a few subjects, how long each one might take, and when they're due.</p><button class="button button-primary" data-open-topic>＋ Add a topic</button></div>
+          <p class="plan-disclaimer"><span>✳</span> This is a planning suggestion, not a promise or a measure of your ability. Leave space for rest, adapt it when things change, and ask for support if you need it.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="topic-dialog" class="modal">
+    <form id="topic-form" method="dialog">
+      <div class="modal-heading"><div><span class="eyebrow">MAKE IT MANAGEABLE</span><h2 id="topic-dialog-title">Add a study topic</h2></div><button class="modal-close" type="button" data-close-dialog aria-label="Close">×</button></div>
+      <label class="field-label" for="topic-subject">Subject</label><input class="text-input" id="topic-subject" name="subject" maxlength="60" placeholder="e.g. Biology" required>
+      <label class="field-label" for="topic-title">Topic or task</label><input class="text-input" id="topic-title" name="title" maxlength="100" placeholder="e.g. Cell structure and transport" required>
+      <div class="form-row"><div><label class="field-label" for="topic-hours">Estimated study time</label><div class="inline-input"><input class="text-input" id="topic-hours" name="estimatedHours" type="number" min="0.25" max="100" step="0.25" placeholder="1.5" required><span>hours</span></div></div><div><label class="field-label" for="topic-deadline">Due date</label><input class="text-input" id="topic-deadline" name="deadline" type="date" required></div></div>
+      <div class="form-row"><div><label class="field-label" for="topic-difficulty">How challenging?</label><select class="text-input" id="topic-difficulty" name="difficulty"><option value="1">Gentle start</option><option value="2" selected>Steady focus</option><option value="3">Needs extra focus</option></select></div><div><label class="field-label" for="topic-priority">Your priority</label><select class="text-input" id="topic-priority" name="priority"><option value="1">Whenever I can</option><option value="2" selected>Important</option><option value="3">Top priority</option></select></div></div>
+      <label class="checkbox-row"><input id="topic-completed" name="completed" type="checkbox"><span>I've already completed this</span></label>
+      <p id="topic-message" class="form-message" role="status"></p>
+      <div class="modal-actions"><button class="button button-quiet" type="button" data-close-dialog>Cancel</button><button id="save-topic-button" class="button button-primary" type="submit">Save topic</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="help-dialog" class="modal help-modal">
+    <div class="modal-heading"><div><span class="eyebrow">YOUR GUIDE TO A KINDER PLAN</span><h2>How Studyflow works</h2></div><button class="modal-close" type="button" data-close-dialog aria-label="Close">×</button></div>
+    <div class="guide-copy"><p><strong>1. Put it all down.</strong> Add each topic, your best estimate, a due date, and what matters most to you.</p><p><strong>2. Get a transparent first draft.</strong> The planner uses clear, repeatable rules: earlier deadlines come first, then your priority and difficulty. No hidden AI scheduling.</p><p><strong>3. Make it yours.</strong> Adjust available hours, change priorities, or mark work complete. The plan is a helpful suggestion — not a promise. It includes short breaks and flags work that may not fit.</p><p><strong>4. Leave room for real life.</strong> Rest, accessibility needs, and unexpected events matter more than a schedule. Revisit the plan whenever you need to.</p></div>
+    <div class="modal-actions"><button class="button button-primary" type="button" data-close-dialog>Got it</button></div>
+  </dialog>
+  <dialog id="policy-dialog" class="modal help-modal">
+    <div class="modal-heading"><div><span class="eyebrow">CLEAR EXPECTATIONS, NO SURPRISES</span><h2 id="policy-title">Privacy at Studyflow</h2></div><button class="modal-close" type="button" data-close-dialog aria-label="Close">×</button></div>
+    <div id="privacy-copy" class="guide-copy"><p>Studyflow stores your account and study topics in a local SQLite file on the computer running this prototype. Your password is saved as a salted hash; it is not stored as plain text.</p><p>This educational prototype does not send your topics to an AI service. Google Fonts may be requested by your browser to display the selected typefaces; the system falls back to local fonts if they are unavailable.</p><p>Use a unique password and keep the project folder private. This prototype does not include account recovery or production-grade deployment safeguards.</p></div>
+    <div id="terms-copy" class="guide-copy hidden"><p>Studyflow is a learning and planning prototype. Its schedule is an estimate and a suggestion, not a guarantee, a grade, or professional advice.</p><p>Review and adjust the plan to fit your actual commitments, wellbeing, and accessibility needs. You are responsible for keeping your estimates and deadlines current.</p><p>Do not expose the local development server to a public network or use this prototype to store sensitive information.</p></div>
+    <div class="modal-actions"><button class="button button-primary" type="button" data-close-dialog>Close</button></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

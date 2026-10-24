@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+studyflow.db
+studyflow.db-shm
+studyflow.db-wal
+.venv/
+venv/
+.env

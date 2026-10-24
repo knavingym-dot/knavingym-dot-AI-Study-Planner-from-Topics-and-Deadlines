@@ -1,0 +1,50 @@
+{
+  "dailyHours": 2,
+  "topics": [
+    {
+      "subject": "Biology",
+      "title": "Cell structure and transport",
+      "estimatedHours": 2,
+      "deadline": "2026-10-26",
+      "difficulty": 2,
+      "priority": 3,
+      "completed": false
+    },
+    {
+      "subject": "Mathematics",
+      "title": "Integration practice",
+      "estimatedHours": 2.5,
+      "deadline": "2026-10-26",
+      "difficulty": 3,
+      "priority": 3,
+      "completed": false
+    },
+    {
+      "subject": "History",
+      "title": "Industrial Revolution essay plan",
+      "estimatedHours": 1.5,
+      "deadline": "2026-10-27",
+      "difficulty": 2,
+      "priority": 2,
+      "completed": false
+    },
+    {
+      "subject": "Chemistry",
+      "title": "Acids and bases review",
+      "estimatedHours": 1,
+      "deadline": "2026-10-28",
+      "difficulty": 1,
+      "priority": 1,
+      "completed": false
+    },
+    {
+      "subject": "English",
+      "title": "Close-reading notes",
+      "estimatedHours": 0.75,
+      "deadline": "2026-10-27",
+      "difficulty": 2,
+      "priority": 2,
+      "completed": false
+    }
+  ]
+}

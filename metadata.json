@@ -1,0 +1,8 @@
+{
+  "name": "Studyflow — AI Study Planner",
+  "description": "A thoughtful study planner that turns deadlines and available time into an editable daily plan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
